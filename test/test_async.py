@@ -2,14 +2,14 @@ from time import time
 
 import pytest
 
-from src.async_cat_server import get_banner_content
+from src.async_cat_server import fetch_banner_content
 
 
 @pytest.mark.asyncio
-@pytest.mark.describe("get_banner_content")
+@pytest.mark.describe("fetch_banner_content")
 @pytest.mark.it("returns the banner_content from the server")
-async def test_get_banner_content_value():
-    banner = await get_banner_content()
+async def test_fetch_banner_content_value():
+    banner = await fetch_banner_content()
     assert banner == {
         "title": "Kitty Litter",
         "bannerImg": "https://riotfest.org/wp-content/uploads/2017/10/AcT9YIL.jpg",

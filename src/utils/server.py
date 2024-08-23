@@ -1,7 +1,5 @@
 import asyncio
 from random import randint
-from time import time
-
 
 async def get_banner_content():
     await asyncio.sleep(randint(1, 3))

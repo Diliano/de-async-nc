@@ -1,5 +1,5 @@
 from time import time
-from async_pet_server import fetch_banner_content
+from src.async_pet_server import fetch_banner_content
 import pytest
 
 
@@ -17,8 +17,7 @@ async def test_fetch_banner_content_returns_value_from_server():
 @pytest.mark.asyncio
 async def test_get_lower_owners_returns_list_of_owners_in_lower_case():
     lower_owners = await get_lower_owners()
-    assert lower_owners == [
-        "pavlov", "schrodinger", "foucault", "vel", "calvin"]
+    assert lower_owners == ["pavlov", "schrodinger", "foucault", "vel", "calvin"]
 
 
 @pytest.mark.skip

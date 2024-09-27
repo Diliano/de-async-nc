@@ -1,5 +1,5 @@
 from time import time
-from src.async_pet_server import fetch_banner_content, get_lower_owners, get_pets_by_owner, get_all_pets
+from src.async_pet_server import fetch_banner_content, get_lower_owners, get_pets_by_owner, get_all_pets, get_pet_pics
 import pytest
 
 
@@ -56,14 +56,12 @@ async def test_get_all_pets_runs_multiple_requests_for_pets_at_the_same_time():
     assert execution_time < allowed_time
 
 
-@pytest.mark.skip
 @pytest.mark.asyncio
 async def test_get_pet_pics_returns_cat_pics_from_server():
     pet_pics = await get_pet_pics(["cute_cat"])
     assert pet_pics == ["cute_cat.png"]
 
 
-@pytest.mark.skip
 @pytest.mark.asyncio
 async def test_get_pet_pics_returns_placeholder():
     pet_pics = await get_pet_pics(["sausage_dog"])
@@ -72,7 +70,6 @@ async def test_get_pet_pics_returns_placeholder():
     ]
 
 
-@pytest.mark.skip
 @pytest.mark.asyncio
 async def test_get_pet_pics_handles_placeholders_and_regular_images():
     pet_pics = await get_pet_pics(
@@ -86,7 +83,6 @@ async def test_get_pet_pics_handles_placeholders_and_regular_images():
     ]
 
 
-@pytest.mark.skip
 @pytest.mark.asyncio
 async def test_get_pet_pics_runs_multiple_requests_for_pics_at_the_same_time():
     start_time = time()

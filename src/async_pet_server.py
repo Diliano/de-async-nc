@@ -23,3 +23,8 @@ async def get_all_pets():
     all_pets = await asyncio.gather(*tasks)
 
     return [{"owner": owner, **pets} for owner, pets in zip(owners, all_pets)]
+
+async def get_pet_pics(file_names):
+    tasks = [server.get_pic(file_name) for file_name in file_names]
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+    return ["placeholder_cat.png" if isinstance(result, Exception) else result for result in results]

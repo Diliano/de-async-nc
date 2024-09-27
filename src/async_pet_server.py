@@ -28,3 +28,9 @@ async def get_pet_pics(file_names):
     tasks = [server.get_pic(file_name) for file_name in file_names]
     results = await asyncio.gather(*tasks, return_exceptions=True)
     return ["placeholder_cat.png" if isinstance(result, Exception) else result for result in results]
+
+async def retry_legacy_server():
+    while True:
+        response = await server.get_legacy_status()
+        if response["status"] == 200:
+            return response["message"]

@@ -1,5 +1,5 @@
 from time import time
-from src.async_pet_server import fetch_banner_content, get_lower_owners, get_pets_by_owner, get_all_pets, get_pet_pics
+from src.async_pet_server import fetch_banner_content, get_lower_owners, get_pets_by_owner, get_all_pets, get_pet_pics, retry_legacy_server
 import pytest
 
 
@@ -92,7 +92,6 @@ async def test_get_pet_pics_runs_multiple_requests_for_pics_at_the_same_time():
     assert execution_time < 4
 
 
-@pytest.mark.skip
 @pytest.mark.asyncio
 async def test_retry_legacy_server_returns_message_from_legacy_server():
     message = await retry_legacy_server()

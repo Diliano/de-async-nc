@@ -1,5 +1,5 @@
 from time import time
-from src.async_pet_server import fetch_banner_content, get_lower_owners, get_pets_by_owner
+from src.async_pet_server import fetch_banner_content, get_lower_owners, get_pets_by_owner, get_all_pets
 import pytest
 
 
@@ -34,7 +34,6 @@ async def test_get_pets_by_owner_returns_dict_with_empty_list_when_no_owner():
     assert res == {"pets": [], "message": "missing not found"}
 
 
-@pytest.mark.skip
 @pytest.mark.asyncio
 async def test_get_all_pets_returns_dict_with_correct_ordered_owners_and_cats():
     res = await get_all_pets()
@@ -47,7 +46,6 @@ async def test_get_all_pets_returns_dict_with_correct_ordered_owners_and_cats():
     ]
 
 
-@pytest.mark.skip
 @pytest.mark.asyncio
 async def test_get_all_pets_runs_multiple_requests_for_pets_at_the_same_time():
     start_time = time()

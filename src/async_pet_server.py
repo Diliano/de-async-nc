@@ -1,4 +1,5 @@
 import src.utils.server as server
+import asyncio
 
 
 async def fetch_banner_content():
@@ -15,3 +16,10 @@ async def get_pets_by_owner(owner):
         return {"pets": cats}
     except KeyError:
         return {"pets": [], "message": f"{owner} not found"}
+    
+async def get_all_pets():
+    owners = await get_lower_owners()
+    tasks = [get_pets_by_owner(owner) for owner in owners]
+    all_pets = await asyncio.gather(*tasks)
+
+    return [{"owner": owner, **pets} for owner, pets in zip(owners, all_pets)]

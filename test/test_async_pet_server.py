@@ -1,5 +1,5 @@
 from time import time
-from src.async_pet_server import fetch_banner_content, get_lower_owners
+from src.async_pet_server import fetch_banner_content, get_lower_owners, get_pets_by_owner
 import pytest
 
 
@@ -19,7 +19,6 @@ async def test_get_lower_owners_returns_list_of_owners_in_lower_case():
     assert lower_owners == ["pavlov", "schrodinger", "foucault", "vel", "calvin"]
 
 
-@pytest.mark.skip
 @pytest.mark.asyncio
 async def test_get_pets_by_owner_returns_dict_with_requested_owners_pets():
     pets = await get_pets_by_owner("pavlov")
@@ -29,7 +28,6 @@ async def test_get_pets_by_owner_returns_dict_with_requested_owners_pets():
     assert pets == {"pets": ["Leben", "Tot"]}
 
 
-@pytest.mark.skip
 @pytest.mark.asyncio
 async def test_get_pets_by_owner_returns_dict_with_empty_list_when_no_owner():
     res = await get_pets_by_owner("missing")

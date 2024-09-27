@@ -2,5 +2,5 @@ import src.utils.server as server
 
 
 async def fetch_banner_content():
-    # TODO: implement your function here
-    pass
+    banner_content = await server.get_banner_content()
+    return banner_content

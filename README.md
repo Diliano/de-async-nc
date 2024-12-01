@@ -1,3 +1,5 @@
-# DE Async
+# Data Engineering Bootcamp - asyncio
 
-Instructions for today's sprint can be found at: https://l2c.northcoders.com/courses/de2-fun/asyncio
+## Overview
+
+This repository contains work completed as part of the asyncio Sprint during my Data Engineering Bootcamp. 
